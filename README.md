@@ -25,6 +25,7 @@ module.exports = gobble( 'src/js' ).observe( 'eslint', {
   // of { filename, messages } objects
   reporter: myCustomReporter,
 
+  // all other options are eslint options
   rules: {
     /* eslint rules */
   }
@@ -34,10 +35,6 @@ module.exports = gobble( 'src/js' ).observe( 'eslint', {
 In this example, whenever files in `src/js` change, they will be linted.
 
 If no eslint options are supplied with the second argument, gobble-eslint will use the nearest `.eslintrc` file instead (this is recommended). See the [eslint](http://eslint.org/) website for documentation on the options you can specify.
-
-On top of the eslint options, you can specify the following:
-
-* `__condition` determines whether this
 
 ## License
 
