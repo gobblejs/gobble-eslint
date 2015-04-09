@@ -15,9 +15,6 @@ npm i -D gobble-eslint
 ```js
 var gobble = require( 'gobble' );
 module.exports = gobble( 'src/js' ).observe( 'eslint', {
-  // skip if this is false (e.g. don't lint during development)
-  __condition: gobble.env() === 'production',
-
   // if `true`, errors will not cause the whole build to fail
   reportOnly: false,
 
@@ -35,6 +32,13 @@ module.exports = gobble( 'src/js' ).observe( 'eslint', {
 In this example, whenever files in `src/js` change, they will be linted.
 
 If no eslint options are supplied with the second argument, gobble-eslint will use the nearest `.eslintrc` file instead (this is recommended). See the [eslint](http://eslint.org/) website for documentation on the options you can specify.
+
+To skip linting when a particular condition is not met, use `.observeIf()`:
+
+```js
+module.exports = gobble( 'src/js' )
+  .observeIf( gobble.env() !== 'production', 'eslint', {...});
+```
 
 ## License
 
